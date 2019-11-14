@@ -1,6 +1,6 @@
 /* eslint valid-jsdoc: "off" */
 
-'use strict';
+"use strict";
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -10,10 +10,10 @@ module.exports = appInfo => {
    * built-in config
    * @type {Egg.EggAppConfig}
    **/
-  const config = exports = {};
+  const config = (exports = {});
 
   // use for cookie sign key, should change to your own and keep security
-  config.keys = appInfo.name + '_1573637611176_2924';
+  config.keys = appInfo.name + "_1573637611176_2924";
 
   // add your middleware config here
   config.middleware = [];
@@ -23,8 +23,31 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+  config.mysql = {
+    client: {
+      host: "cdb-h5san8zw.cd.tencentcdb.com",
+      port: "10027",
+      user: "root",
+      password: "!ayuperson",
+      database: "react_blog"
+    },
+    app: true,
+    agent: false
+  };
+
+  config.security = {
+    csrf: {
+      enable: false
+    },
+    domainWhiteList: ["*"]
+  };
+  config.cors = {
+    oragin: "*",
+    allowMethods: "GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS"
+  };
+
   return {
     ...config,
-    ...userConfig,
+    ...userConfig
   };
 };
