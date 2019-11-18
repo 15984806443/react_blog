@@ -9,6 +9,7 @@ import axios from "axios";
 import { Row, Col, Icon, Breadcrumb, Affix } from "antd";
 import marked from "marked";
 import hljs from "highlight.js";
+import servicePath from '../config/apiUrl'
 import "markdown-navbar/dist/navbar.css";
 import "../public/style/pages/detailed.css";
 import "highlight.js/styles/monokai-sublime.css";
@@ -97,7 +98,7 @@ const Detailed = props => {
 Detailed.getInitialProps = async context => {
   let id = context.query.id;
   const promise = new Promise(resolve => {
-    axios("http://127.0.0.1:7001/default/getArticleById/" + id).then(res => {
+    axios(servicePath.getArticleById + id).then(res => {
       resolve(res.data.data[0]);
     });
   });
